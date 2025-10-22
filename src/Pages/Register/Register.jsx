@@ -1,14 +1,37 @@
-import React from 'react';
+
 import { Link } from 'react-router';
+import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
+import { use } from 'react';
 
 const Register = () => {
+     
+const {createUser} = use(AuthContext);
+const handleRegister = (event) => {
+event.preventDefault();
+const name = event.target.name.value;
+const photo = event.target.photo.value;
+const email = event.target.email.value;
+const password = event.target.password.value;
+console.log(name,photo,email,password);
+ createUser(email,password)
+ .then(result => 
+ {
+    console.log(result.user);
+ }
+ ).catch( error => {
+    console.log(error.message);
+ })
+
+}
+
+
     return (
         <div>
              <div className='flex justify-center  items-center min-h-screen '>
              <div className="card bg-base-100 w-[35%] shrink-0 rounded-[5px]  shadow-2xl">
       <div className="card-body px-15">
         <h1 className='text-4xl font-semibold text-center mt-[30px] pb-10 border-b border-base-300'>Register your account</h1>
-       <form>
+       <form onSubmit={handleRegister}>
          <fieldset className="fieldset ">
           <label className="label text-xl font-semibold text-[#403F3F] mb-3">Your Name</label>
           <input type="text" name='name' className="input w-full text-[16px] font-normal mb-5 bg-[#F3F3F3]" placeholder="Enter your name" required />
