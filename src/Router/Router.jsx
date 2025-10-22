@@ -6,6 +6,8 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Loading from "../Components/Loading/Loading";
 import AuthLayout from "../Layout/AuthLayout";
+import PrivetRoute from "../Provider/Private/PrivateRoute";
+import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 
 
 
@@ -43,5 +45,13 @@ export const router = createBrowserRouter([
                 Component:Register,
             }
         ]
-    }
+    },
+    {
+            path:'/product-details/:id',
+            element:<PrivetRoute>
+                <ProductDetails></ProductDetails>
+            </PrivetRoute>,
+            loader:() => fetch('/product.json'),
+            hydrateFallbackElement:<Loading></Loading>
+   },
 ])

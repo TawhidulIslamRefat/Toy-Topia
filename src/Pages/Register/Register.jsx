@@ -1,22 +1,59 @@
-
-import { Link } from 'react-router';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
-import { use } from 'react';
+import { use, useState } from 'react';
 
 const Register = () => {
      
-const {createUser} = use(AuthContext);
+const {createUser,setUser,updateUser,signInGoogle } = use(AuthContext);
+const navigate = useNavigate();
+const [error, setError] = useState("");
+const [showPassword, setShowPassword] = useState(false);
+
+const handleSignInGoogle =() =>{
+signInGoogle()
+.then( result => {
+  console.log(result.user);
+})
+.catch(error => {
+  console.log(error.message);
+})
+}
+
 const handleRegister = (event) => {
 event.preventDefault();
 const name = event.target.name.value;
 const photo = event.target.photo.value;
 const email = event.target.email.value;
 const password = event.target.password.value;
-console.log(name,photo,email,password);
+ if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      setError("Password must have at least one uppercase letter.");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setError("Password must have at least one lowercase letter.");
+      return;
+    }
  createUser(email,password)
  .then(result => 
  {
-    console.log(result.user);
+    const user = result.user;
+    updateUser({
+        displayName:name,
+        photoURL:photo,
+    })
+    .then(()=>{
+        setUser({
+            ...user,
+            displayName:name,
+            photoURL:photo,
+        });
+        navigate('/');
+    })
  }
  ).catch( error => {
     console.log(error.message);
@@ -39,10 +76,30 @@ console.log(name,photo,email,password);
           <input type="text" name='photo' className="input w-full text-[16px] font-normal mb-5 bg-[#F3F3F3]" placeholder="Enter your Photo URL" required />
           <label className="label text-xl font-semibold text-[#403F3F] mb-3">Email</label>
           <input type="email" name='email' className="input w-full text-[16px] font-normal mb-5 bg-[#F3F3F3]" placeholder="Enter your email address" required  />
-          <label className="label text-xl font-semibold text-[#403F3F] mb-3">Password</label>
-          <input type="password" name='password' className="input w-full text-[16px] font-normal mb-5 bg-[#F3F3F3]" placeholder="Enter your password" required  />
+            <label className="label text-xl font-semibold text-[#403F3F] mb-3">Password</label>
+          <div className="relative">
+          <input
+                  type={showPassword ? "text" : "password"}
+                  name='password'
+                  className="input w-full text-[16px] font-normal mb-3 bg-[#F3F3F3]"
+                  placeholder="Enter your password"
+                  required
+                />
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-3 right-4 cursor-pointer text-[16px]"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+          </div>
+          {error && <p className="text-red-600">{error}</p>}
           <button type='submit' className="btn btn-neutral mt-4 mb-2">Register</button>
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            
+        </fieldset>
+       </form>
+       <button
+       onClick={handleSignInGoogle}
+       className="btn bg-white text-black border-[#e5e5e5]">
                 <svg
                   aria-label="Google logo"
                   width="16"
@@ -70,10 +127,8 @@ console.log(name,photo,email,password);
                     ></path>
                   </g>
                 </svg>
-                Login with Google
+                Register with Google
               </button>
-        </fieldset>
-       </form>
         <p className='text-[16px] font-semibold text-[#706F6F] text-center'>
                  Already Have An Account ? <Link className='text-[#F75B5F] hover:underline' to='/auth/login'>Login</Link>
                </p>

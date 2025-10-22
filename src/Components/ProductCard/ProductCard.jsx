@@ -1,8 +1,9 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 const ProductCard = ({ product }) => {
-  console.log(product);
   const {
+     productId,
     productName,
     price,
     rating,
@@ -33,7 +34,7 @@ const ProductCard = ({ product }) => {
             Price - $ {price}
           </p>
           <div className="card-actions">
-            <button className="bg-gradient-to-r from-green-600 to-teal-700 w-full py-2.5 text-[16px] font-medium text-white rounded-[8px]">View More</button>
+            <Link to={`/product-details/${productId}`} className="btn bg-gradient-to-r from-green-600 to-teal-700 w-full py-2.5 text-[16px] font-medium text-white rounded-[8px]">View More</Link>
           </div>
         </div>
       </div>

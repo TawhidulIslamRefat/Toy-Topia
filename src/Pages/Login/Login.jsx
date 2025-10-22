@@ -1,7 +1,39 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const {signIn,setUser,signInGoogle} =use(AuthContext);
+  const location = useLocation();
+  const navigate  = useNavigate();
+
+const handleGoogleLogin =() => {
+    signInGoogle()
+.then( result => {
+  console.log(result.user);
+})
+.catch(error => {
+  console.log(error.message);
+})
+}
+
+
+const handleLogin = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    signIn(email,password)
+    .then( result => {
+        const user = result.user;
+        console.log(user);
+        setUser(user);
+        navigate(`${location.state? location.state:'/'}`)
+    })
+    .catch(error => {
+        alert(error.message);
+    })
+}
+
   return (
     <div className="flex justify-center items-center min-h-screen  ">
       <div className="card bg-base-100 w-[35%] shrink-0 rounded-[5px] shadow-2xl ">
@@ -9,7 +41,7 @@ const Login = () => {
           <h1 className="text-4xl font-semibold text-center mt-[30px] pb-10 border-b border-base-300 px-5">
             Login your account
           </h1>
-          <form>
+          <form onSubmit={handleLogin}>
             <fieldset className="fieldset ">
               <label className="label text-xl font-semibold text-[#403F3F] mb-3">
                 Email
@@ -32,7 +64,12 @@ const Login = () => {
               <button type="submit" className="btn btn-neutral mt-4 mb-2">
                 Login
               </button>
-              <button className="btn bg-white text-black border-[#e5e5e5]">
+              
+            </fieldset>
+          </form>
+          <button 
+          onClick={handleGoogleLogin}
+          className="btn bg-white text-black border-[#e5e5e5]">
                 <svg
                   aria-label="Google logo"
                   width="16"
@@ -62,8 +99,6 @@ const Login = () => {
                 </svg>
                 Login with Google
               </button>
-            </fieldset>
-          </form>
           <p className="text-[16px] font-semibold text-[#706F6F] text-center">
             Dont’t Have An Account ?{" "}
             <Link
