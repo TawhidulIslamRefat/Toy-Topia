@@ -1,31 +1,28 @@
 import React, {  useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
 
 const MyProfile = () => {
   const {user, setUser,updateUser} = useContext(AuthContext);
   const [name, setName] = useState(user?.displayName || "");
   const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
   const [editing,setEditing] = useState(false);
-  const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
+  
 
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
-     
     updateUser(user,{
         displayName:name,
         photoURL:photoURL,
     })
     .then(() => {
         setUser({...user,displayName:name,photoURL:photoURL});
-        setSuccess("Profile update successfully");
+        toast.success("Profile update successfully");
         setEditing(false);
     })
     .catch(error => {
-        setError(error.message);
+        toast.error(error.message);
     });
   };
 
@@ -85,14 +82,6 @@ const MyProfile = () => {
             Edit Profile
             </button> )
             }
-           {success && (
-          <p className="text-green-600 text-center mt-3 font-medium">
-            {success}
-          </p>
-        )}
-        {error && (
-          <p className="text-red-500 text-center mt-3 font-medium">{error}</p>
-        )}
         </div>
       </div>
     </div>

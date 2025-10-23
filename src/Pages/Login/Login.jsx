@@ -2,6 +2,9 @@ import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
   const {signIn,setUser,signInGoogle} =use(AuthContext);
@@ -14,10 +17,12 @@ const handleGoogleLogin =() => {
 .then( result => {
   const user = result.user;
   setUser(user);
-  navigate(`${location.state? location.state:'/'}`)
+ toast.success('Login Successful!', {
+  onClose: () => navigate(location.state?.from || '/')
+});
 })
 .catch(error => {
-  console.log(error.message);
+  toast.error(error.message);
 })
 };
 
@@ -28,17 +33,19 @@ const handleLogin = (event) => {
     signIn(email,password)
     .then( result => {
         const user = result.user;
-        console.log(user);
         setUser(user);
-        navigate(`${location.state? location.state:'/'}`)
+        toast.success('Login Successful!', {
+  onClose: () => navigate(location.state?.from || '/')
+  });
     })
     .catch(error => {
-        alert(error.message);
+        toast.error(error.message);
     })
 }
 
   return (
     <div className="flex justify-center items-center min-h-screen">
+      <ToastContainer position="top-right" autoClose={3000} />
       <div className="card bg-base-100 w-[35%] shrink-0 rounded-[5px] shadow-2xl ">
         <div className="card-body px-15">
           <h1 className="text-4xl font-semibold text-center mt-[30px] pb-10 border-b border-base-300 px-5">

@@ -2,6 +2,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import { use, useState } from 'react';
+import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
      
@@ -16,10 +17,12 @@ const handleGoogleLogin =() => {
 .then( result => {
   const user = result.user;
   setUser(user);
-  navigate(`${location.state? location.state:'/'}`)
+   toast.success('Login Successful!', {
+    onClose: () => navigate(location.state?.from || '/')
+    });
 })
 .catch(error => {
-  console.log(error.message);
+  toast.error(error.message);
 })
 };
 
@@ -55,11 +58,15 @@ const password = event.target.password.value;
             displayName:name,
             photoURL:photo,
         });
-        navigate('/');
+
+         toast.success('Register Successful!', {
+          onClose: () => navigate('/')
+          });
+        ;
     })
  }
  ).catch( error => {
-    console.log(error.message);
+    toast.error(error.message);
  })
 
 }
@@ -67,6 +74,7 @@ const password = event.target.password.value;
 
     return (
         <div>
+          <ToastContainer></ToastContainer>
              <div className='flex justify-center  items-center min-h-screen '>
              <div className="card bg-base-100 w-[35%] shrink-0 rounded-[5px]  shadow-2xl">
       <div className="card-body px-15">

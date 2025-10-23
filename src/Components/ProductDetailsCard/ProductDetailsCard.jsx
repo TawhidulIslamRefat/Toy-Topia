@@ -2,6 +2,7 @@
 import { use } from "react";
 import { FaStar } from "react-icons/fa";
 import { OrderContext } from "../../Provider/OrderProvider/OrderProvider";
+import { toast, ToastContainer } from "react-toastify";
 
 const ProductDetailsCard = ({ product }) => {
 
@@ -24,12 +25,13 @@ const ProductDetailsCard = ({ product }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addOrder(product)
-    alert("Your Order Request is Successfully Progress")
+    toast.success("Your Order Request is Successfully Progress")
     e.target.reset();
   };
 
   return (
     <div className="w-10/12 mx-auto my-10 p-6 bg-base-300 items-center shadow-xl rounded-xl flex flex-col lg:flex-row gap-8">
+      <ToastContainer></ToastContainer>
       <div className="">
         <img
           src={pictureURL}
