@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import {Pagination, Autoplay } from "swiper/modules";
-import { Link } from 'react-router';
 import image1 from '../../assets/—Pngtree—30 off transparent discount offer_8508084.png'
 import image2 from '../../assets/—Pngtree—special offer free png_6960768.png'
 

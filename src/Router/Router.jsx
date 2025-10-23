@@ -8,6 +8,7 @@ import Loading from "../Components/Loading/Loading";
 import AuthLayout from "../Layout/AuthLayout";
 import PrivetRoute from "../Provider/Private/PrivateRoute";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
+import ForgetPassword from "../Pages/ForgetPassword/ForgetPassword";
 
 
 
@@ -27,7 +28,9 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/my-profile',
-                Component:MyProfile
+                element:<PrivetRoute>
+                    <MyProfile></MyProfile>
+                </PrivetRoute>
             }
         ]
     },
@@ -43,7 +46,11 @@ export const router = createBrowserRouter([
             {
                 path:'/auth/register',
                 Component:Register,
-            }
+            },
+            {
+                path:'/auth/forget-password',
+                Component:ForgetPassword,
+            },
         ]
     },
     {

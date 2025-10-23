@@ -12,13 +12,14 @@ const Login = () => {
 const handleGoogleLogin =() => {
     signInGoogle()
 .then( result => {
-  console.log(result.user);
+  const user = result.user;
+  setUser(user);
+  navigate(`${location.state? location.state:'/'}`)
 })
 .catch(error => {
   console.log(error.message);
 })
-}
-
+};
 
 const handleLogin = (event) => {
     event.preventDefault();
@@ -37,7 +38,7 @@ const handleLogin = (event) => {
 }
 
   return (
-    <div className="flex justify-center items-center min-h-screen  ">
+    <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-[35%] shrink-0 rounded-[5px] shadow-2xl ">
         <div className="card-body px-15">
           <h1 className="text-4xl font-semibold text-center mt-[30px] pb-10 border-b border-base-300 px-5">
@@ -72,7 +73,7 @@ const handleLogin = (event) => {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
           </div>
-           <div><a className="link link-hover">Forgot password?</a></div>
+           <div><Link to='/auth/forget-password' className="link link-hover">Forgot password?</Link></div>
               <button type="submit" className="btn btn-neutral mt-4 mb-2">
                 Login
               </button>
