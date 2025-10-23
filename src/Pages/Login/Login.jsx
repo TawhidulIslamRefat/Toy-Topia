@@ -72,6 +72,7 @@ const handleLogin = (event) => {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
           </div>
+           <div><a className="link link-hover">Forgot password?</a></div>
               <button type="submit" className="btn btn-neutral mt-4 mb-2">
                 Login
               </button>

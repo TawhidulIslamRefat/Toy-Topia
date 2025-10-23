@@ -28,7 +28,6 @@ const HomeSlider = ({product}) => {
                   </h1>
                     <p className='text-xl py-3 text-center font-medium'>Price $ {product.price}</p>
                     <p className='text--[18px] mb-5 text-[#d0d6db]'>{product.description}</p>
-                    <Link className='btn text-center'>View More</Link>
                  </div>
                  <div className='absolute bottom-40 left-130'>
                   <img className='w-70' src={image1} alt="" />

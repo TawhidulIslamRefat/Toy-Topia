@@ -32,7 +32,7 @@ const ProductDetailsCard = ({ product }) => {
   };
 
   return (
-    <div className="w-10/12 mx-auto my-10 p-6 bg-white shadow-lg rounded-xl flex flex-col lg:flex-row gap-8">
+    <div className="w-10/12 mx-auto my-10 p-6 bg-base-300 items-center shadow-xl rounded-xl flex flex-col lg:flex-row gap-8">
       <div className="">
         <img
           src={pictureURL}

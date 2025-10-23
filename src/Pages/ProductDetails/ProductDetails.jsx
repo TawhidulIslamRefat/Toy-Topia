@@ -19,7 +19,7 @@ const ProductDetails = () => {
             <header>
                 <Navbar></Navbar>
             </header>
-            <main className='flex-1 min-h-screen'>
+            <main className='flex-1'>
                <ProductDetailsCard product={product} ></ProductDetailsCard>
             </main>
             <footer>
