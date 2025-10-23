@@ -9,56 +9,67 @@ import AuthLayout from "../Layout/AuthLayout";
 import PrivetRoute from "../Provider/Private/PrivateRoute";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import ForgetPassword from "../Pages/ForgetPassword/ForgetPassword";
-
-
-
+import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import MyOrder from "../Pages/MyOrder/MyOrder";
 
 export const router = createBrowserRouter([
-    {
-        path:'/',
-        Component:HomeLayout,
-        errorElement:<h1>Error</h1>,
-        children:[
-            {    
-                index:true,
-                path:'/',
-                Component:Home,
-                loader:() => fetch('/product.json'),
-                hydrateFallbackElement:<Loading></Loading>
-            },
-            {
-                path:'/my-profile',
-                element:<PrivetRoute>
-                    <MyProfile></MyProfile>
-                </PrivetRoute>
-            }
-        ]
-    },
-    {
-        path:"/auth",
-        Component:AuthLayout,
-        errorElement:<h1>Error</h1>,
-        children:[
-            {
-                path:'/auth/login',
-                element:<Login></Login>
-            },
-            {
-                path:'/auth/register',
-                Component:Register,
-            },
-            {
-                path:'/auth/forget-password',
-                Component:ForgetPassword,
-            },
-        ]
-    },
-    {
-            path:'/product-details/:id',
-            element:<PrivetRoute>
-                <ProductDetails></ProductDetails>
-            </PrivetRoute>,
-            loader:() => fetch('/product.json'),
-            hydrateFallbackElement:<Loading></Loading>
-   },
-])
+  {
+    path: "/",
+    Component: HomeLayout,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        index: true,
+        path: "/",
+        Component: Home,
+        loader: () => fetch("/product.json"),
+        hydrateFallbackElement: <Loading></Loading>,
+      },
+      {
+        path: "/my-profile",
+        element: (
+          <PrivetRoute>
+            <MyProfile></MyProfile>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/my-order",
+        element:<MyOrder></MyOrder>, 
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    Component: AuthLayout,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/auth/register",
+        Component: Register,
+      },
+      {
+        path: "/auth/forget-password",
+        Component: ForgetPassword,
+      },
+    ],
+  },
+  {
+    path: "/product-details/:id",
+    element: (
+      <PrivetRoute>
+        <ProductDetails></ProductDetails>
+      </PrivetRoute>
+    ),
+    loader: () => fetch("/product.json"),
+    hydrateFallbackElement: <Loading></Loading>,
+  },
+  {
+    path: "/*",
+    element:<ErrorPage></ErrorPage>,
+  },
+]);

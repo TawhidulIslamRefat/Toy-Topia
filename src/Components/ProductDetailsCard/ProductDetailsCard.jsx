@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+
+import { use } from "react";
 import { FaStar } from "react-icons/fa";
+import { OrderContext } from "../../Provider/OrderProvider/OrderProvider";
 
 const ProductDetailsCard = ({ product }) => {
-  const [formData, setFormData] = useState({ name: "", email: "" });
 
-  if (!product) return <p>Loading...</p>;
+  const {addOrder} = use(OrderContext);
 
   const {
     productName,
@@ -18,17 +19,13 @@ const ProductDetailsCard = ({ product }) => {
     subCategory
   } = product;
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) {
-      alert("Please fill all fields");
-      return;
-    }
-    setFormData({ name: "", email: "" });
+    addOrder(product)
+    alert("Your Order Request is Successfully Progress")
+    e.target.reset();
   };
 
   return (
@@ -74,8 +71,6 @@ const ProductDetailsCard = ({ product }) => {
               type="text"
               name="name"
               placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
               className="input input-bordered w-full"
               required
             />
@@ -83,13 +78,11 @@ const ProductDetailsCard = ({ product }) => {
               type="email"
               name="email"
               placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
               className="input input-bordered w-full"
               required
             />
             <button type="submit" className="btn btn-primary mt-2">
-              Buy Now
+              Order Now
             </button>
           </form>
         </div>
