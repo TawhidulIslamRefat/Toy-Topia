@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 
-
 const TopRating = () => {
-const [products,setProduct] = useState([]);
+  const [products, setProduct] = useState([]);
 
-      useEffect(() => {
+  useEffect(() => {
     fetch("/top-rating.json")
       .then((res) => res.json())
       .then((data) => setProduct(data))
@@ -15,21 +14,18 @@ const [products,setProduct] = useState([]);
 
   return (
     <div className="mt-20">
+      <h1 className="text-3xl font-bold text-center mb-10">Top Rated Toy</h1>
 
-      <h1 className='text-3xl font-bold text-center mb-10'>Top Rated Toy</h1>
-
-  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-      {products.map((product, index) => (
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {products.map((product, index) => (
           <div
             key={product.productId}
             className={`relative p-4 bg-white shadow-md rounded-2xl border transition-transform duration-300 hover:scale-105 ${
               index === 0 ? "border-pink-500 shadow-pink-200 scale-105" : ""
-            }`} data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="1500"
+            }`}
           >
             {index === 0 && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-[10px] lg:text-xs font-semibold px-1 lg:px-3 py-1 rounded-full shadow">
                 🔥 Top Rated
               </span>
             )}
@@ -50,7 +46,7 @@ const [products,setProduct] = useState([]);
             </div>
           </div>
         ))}
-  </div>
+      </div>
     </div>
   );
 };

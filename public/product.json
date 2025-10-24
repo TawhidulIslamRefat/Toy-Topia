@@ -1,6 +1,18 @@
 [
   {
     "productId": 1,
+    "productName": "Hot Wheels Track Set",
+    "sellerName": "Speedy Toys",
+    "sellerEmail": "support@speedytoys.com",
+    "price": 34.99,
+    "rating": 4.5,
+    "availableQuantity": 120,
+    "description": "An exciting Hot Wheels track set featuring loops, ramps, and sharp turns, designed for thrill-seeking kids who love speed and racing. This set allows children to design and customize their own tracks, testing the limits of their imagination while improving problem-solving skills. Perfect for competitive racing with friends or solo creative play, it promotes teamwork, fine motor skills, and hand-eye coordination. Durable and safe for endless hours of fun, this set is ideal for children aged 5 and above.",
+    "pictureURL": "https://www.pngall.com/wp-content/uploads/11/Hot-Wheels-Car-PNG-Image-HD.png",
+    "subCategory": "Vehicle Toys"
+  },
+  {
+    "productId": 2,
     "productName": "Lego Classic Bricks",
     "sellerName": "Toys R Us Local",
     "sellerEmail": "contact@toysruslocal.com",
@@ -10,18 +22,6 @@
     "description": "A timeless set of colorful Lego bricks designed to spark imagination, creativity, and problem-solving skills in children of all ages. With hundreds of pieces in a variety of shapes and colors, kids can construct anything they dream of—from houses, vehicles, and spaceships to entirely unique creations. This set encourages both solo play and collaborative building, helping develop fine motor skills, spatial awareness, and planning. Perfect for inspiring storytelling, hands-on learning, and endless hours of constructive fun. Suitable for children aged 4 and above.",
     "pictureURL": "https://www.lego.com/cdn/cs/set/assets/bltbcfcf384c7e75fd6/10713_Prod.png?fit=crop&quality=80&width=400&height=400&dpr=1",
     "subCategory": "Building Blocks"
-  },
-  {
-    "productId": 2,
-    "productName": "Hot Wheels Track Set",
-    "sellerName": "Speedy Toys",
-    "sellerEmail": "support@speedytoys.com",
-    "price": 34.99,
-    "rating": 4.5,
-    "availableQuantity": 120,
-    "description": "An exciting Hot Wheels track set featuring loops, ramps, and sharp turns, designed for thrill-seeking kids who love speed and racing. This set allows children to design and customize their own tracks, testing the limits of their imagination while improving problem-solving skills. Perfect for competitive racing with friends or solo creative play, it promotes teamwork, fine motor skills, and hand-eye coordination. Durable and safe for endless hours of fun, this set is ideal for children aged 5 and above.",
-    "pictureURL": "https://png.pngtree.com/png-clipart/20250205/original/pngtree-vibrant-hot-wheels-track-setup-with-toy-cars-on-curvy-tracks-png-image_19453322.png",
-    "subCategory": "Vehicle Toys"
   },
   {
     "productId": 3,

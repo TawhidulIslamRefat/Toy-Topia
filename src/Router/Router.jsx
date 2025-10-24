@@ -34,9 +34,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/my-order",
-        element:<PrivetRoute>
+        element: (
+          <PrivetRoute>
             <MyOrder></MyOrder>
-        </PrivetRoute>, 
+          </PrivetRoute>
+        ),
       },
     ],
   },
@@ -70,6 +72,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "/*",
-    element:<ErrorPage></ErrorPage>,
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
