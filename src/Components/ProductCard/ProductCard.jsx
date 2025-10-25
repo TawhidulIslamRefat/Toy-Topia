@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
       <div
         className="card shadow-sm h-full flex flex-col transition-transform duration-500 hover:scale-102 hover:bg-red-100"
         data-aos="fade-up"
-        data-aos-duration="1000"
+        data-aos-duration="7000"
       >
         <figure className="p-5">
           <img
