@@ -1,11 +1,10 @@
 import React from "react";
-import { TailSpin } from "react-loader-spinner";
-
+import { PulseLoader } from "react-spinners";
 const Loading = () => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
-      <TailSpin color="#4ade80" height={80} width={80} />
-    </div>
+    <div className="flex justify-center items-center min-h-screen gap-15 sm:gap-25 ">
+          <PulseLoader color="#F52549" size={40} />
+        </div>
   );
 };
 

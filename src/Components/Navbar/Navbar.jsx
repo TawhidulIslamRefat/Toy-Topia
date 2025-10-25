@@ -7,20 +7,21 @@ const Navbar = () => {
   const { user, logOut } = use(AuthContext);
   const links = (
     <>
-      <li className="text-[16px] font-medium">
+      <li className="text-[12px] md:text-[16px] font-medium">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="text-[16px] font-medium">
+      <li className="text-[12px] md:text-[16px] font-medium">
         <NavLink to="/my-profile">My Profile</NavLink>
       </li>
 
-      {user ? (
-        <li className="text-[16px] font-medium">
+      {user && (
+        <li className="text-[12px] md:text-[16px] font-medium">
           <NavLink to="/my-order">My Order</NavLink>
         </li>
-      ) : (
-        <li className="text-[16px] font-medium">
-          <NavLink to="/auth/register">Register</NavLink>
+      )}
+      {user && (
+        <li className="text-[12px] md:text-[16px] font-medium">
+          <NavLink to="/notification">Notification</NavLink>
         </li>
       )}
     </>
@@ -42,11 +43,11 @@ const Navbar = () => {
           <div className="navbar-start">
             <a
               href="/"
-              className="text-[13px]  md:text-xl font-semibold text-[#F52549]"
+              className="text-[14px]  md:text-xl font-semibold text-[#F52549] flex items-center gap-2"
             >
-              ToyTopia –
-              <span className="text-[10px] sm:text-[16px] text-black">
-                A Kids Toy Store Platform
+              ToyTopia 
+              <span className="text-[10px] sm:text-[16px] text-black hidden lg:block">
+                - A Kids Toy Store Platform
               </span>
             </a>
           </div>
@@ -76,14 +77,12 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-
             <div>
               {user ? (
                 <button
                   onClick={handleLogOut}
                   className="relative inline-flex items-center justify-center md:px-6 px-4  md:py-3 py-1.5  font-semibold text-white bg-linear-to-r from-[#FA6775]  to-[#F52549] overflow-hidden rounded-lg group"
                 >
-                  <span className="absolute w-0 h-0 transition-all duration-300 ease-out  rounded-full group-hover:w-56 group-hover:h-56"></span>
                   <span className="relative">Logout</span>
                 </button>
               ) : (
@@ -91,10 +90,22 @@ const Navbar = () => {
                   to="/auth/login"
                   className="relative inline-flex items-center justify-center md:px-6 px-4  md:py-3 py-1.5 font-semibold text-white overflow-hidden bg-linear-to-r from-[#FA6775]  to-[#F52549]  rounded-lg group"
                 >
-                  <span className="absolute w-0 h-0 transition-all duration-300 ease-out rounded-full group-hover:w-56 group-hover:h-56"></span>
                   <span className="relative">Login</span>
                 </Link>
               )}
+            </div>
+             <div>
+              {
+                user ? "" : (
+                  <Link
+                  to="/auth/register"
+                  className="relative inline-flex items-center justify-center md:px-5 px-4  md:py-2.5 py-1.5 font-semibold text-black overflow-hidden border border-[#FA6775]  rounded-lg group hover:bg-linear-to-r from-[#FA6775]  to-[#F52549] hover:text-white"
+                >
+                  <span className="relative">Register</span>
+                </Link>
+                )
+              }
+
             </div>
           </div>
         </div>

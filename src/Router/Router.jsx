@@ -11,6 +11,8 @@ import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import ForgetPassword from "../Pages/ForgetPassword/ForgetPassword";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import MyOrder from "../Pages/MyOrder/MyOrder";
+import Notification from "../Components/Notification/Notification";
+import ProductCard from "../Components/ProductCard/ProductCard";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
             <MyOrder></MyOrder>
           </PrivetRoute>
         ),
+      },
+      {
+        path: "/top-product",
+        element:<ProductCard></ProductCard>
+      },
+      {
+        path: "/notification",
+        element: <Notification></Notification>       
       },
     ],
   },

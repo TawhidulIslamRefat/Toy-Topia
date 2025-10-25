@@ -17,7 +17,7 @@ const HomeLayout = () => {
 
   return showLoader ? (
     <div className="flex justify-center items-center min-h-screen gap-15 sm:gap-25 ">
-      <PulseLoader color="#9f62f2" size={40} />
+      <PulseLoader color="#F52549" size={40} />
     </div>
   ) : (
     <div className="bg-[#F6F6F4] flex flex-col">

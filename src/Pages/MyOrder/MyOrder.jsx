@@ -1,6 +1,8 @@
 import React, { use } from "react";
 import { OrderContext } from "../../Provider/OrderProvider/OrderProvider";
+import image from '../../assets/undraw_order-delivered_puaw.svg'
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const MyOrder = () => {
   const { order } = use(OrderContext);
@@ -9,14 +11,23 @@ const MyOrder = () => {
     <div>
       <title> ToyTopia - My-Order</title>
       <div className="w-[90%] lg:w-10/12 mx-auto my-10">
-        <h2 className="text-4xl font-bold text-center mb-10">My Orders</h2>
-
         {order.length === 0 ? (
-          <p className="text-center text-gray-500 text-xl mt-10">
+         <div className="flex justify-center items-center flex-col">
+          <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-center mb-4">My Orders</h2>
+           <p className="text-center text-gray-500 text-[16px] md:text-xl mt-2 mb-4">
             You have no orders yet.
           </p>
+          <div>
+            <img className="my-15" src={image} alt="" />
+          </div>
+          <Link to="/" className="btn bg-linear-to-r from-[#FA6775]  to-[#F52549] text-white">
+            Go Back Home and order Now
+          </Link>
+         </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div>
+            <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-center mb-10">My Orders</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {order.map((product, index) => (
               <div
                 key={index}
@@ -49,28 +60,8 @@ const MyOrder = () => {
               </div>
             ))}
           </div>
+          </div>
         )}
-      </div>
-      <div className="w-10/12 mx-auto my-10">
-        <h2 className="text-4xl font-bold text-center text-red-500 mb-10">
-          Notifications
-        </h2>
-        <ul className="space-y-4 my-4 border-yellow-500 bg-yellow-50 ">
-          <li className="p-4 rounded-lg shadow-md border-l-4">
-            <p className="font-medium">
-              Your order ORD-1010 has been Processing!
-            </p>
-            <p className="text-gray-500 text-sm">2025-10-20</p>
-          </li>
-        </ul>
-        <ul className="space-y-4  border-blue-500 bg-blue-50 ">
-          <li className="p-4 rounded-lg shadow-md border-l-4">
-            <p className="font-medium">
-              New Fisher-Price Learning Tablet - 10% OFF!
-            </p>
-            <p className="text-gray-500 text-sm">2025-10-10</p>
-          </li>
-        </ul>
       </div>
     </div>
   );

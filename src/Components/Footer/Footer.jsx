@@ -67,10 +67,10 @@ const Footer = () => {
           <Link className=" text-lg sm:text-xl font-semibold text-[#F52549]">
             ToyTopia –
             <span className="text-sm sm:text-[16px] text-black">
-              A Local Kids Toy Store Platform
+              A Kids Toy Store Platform
             </span>
           </Link>
-          <p>© 2025 Sellify. All rights reserved.</p>
+          <p>© 2025 ToyTopia. All rights reserved.</p>
         </aside>
       </footer>
     </div>

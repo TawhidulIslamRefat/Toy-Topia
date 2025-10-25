@@ -8,7 +8,7 @@
 
 The purpose of this project is to provide a responsive and user-friendly web application where users can:
 
-- Browse, search, and view toys.
+- view toys.
 - Check product details including ratings, availability, and price.
 - Access a personalized dashboard with authentication.
 - Quickly access top-rated and best-selling products.
