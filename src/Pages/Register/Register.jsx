@@ -15,7 +15,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        toast.success("Login Successful!", {
+        toast.success("Register Successful!", {
           onClose: () => navigate(location.state?.from || "/"),
         });
       })

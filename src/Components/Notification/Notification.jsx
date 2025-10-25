@@ -4,6 +4,7 @@ const Notification = () => {
     return (
         <div>
             <div className="w-10/12 mx-auto my-10">
+            <title>ToyTopia - Notification</title>
         <h2 className="text-xl md:2xl lg:text-4xl font-bold text-center text-red-500 mb-10">
           Notifications/ <span className="text-red-400 ">Coupon</span>
         </h2>
