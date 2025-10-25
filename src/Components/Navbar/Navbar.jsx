@@ -1,27 +1,31 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { FaUserAlt } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+import { IoNotificationsSharp } from "react-icons/io5";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
+import { IoMdHome } from "react-icons/io";
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
   const links = (
     <>
-      <li className="text-[12px] md:text-[16px] font-medium">
-        <NavLink to="/">Home</NavLink>
+      <li className="text-[15px] md:text-[16px] font-medium">
+        <NavLink to="/" className='flex items-center'> <span  className="flex md:hidden"><IoMdHome /></span> <span className="hidden md:flex">Home</span></NavLink>
       </li>
-      <li className="text-[12px] md:text-[16px] font-medium">
-        <NavLink to="/my-profile">My Profile</NavLink>
+      <li className="text-[14px] md:text-[16px] font-medium">
+        <NavLink to="/my-profile"> <span  className="flex md:hidden"><FaUserCircle /></span> <span className="hidden md:flex">My Profile</span></NavLink>
       </li>
 
       {user && (
-        <li className="text-[12px] md:text-[16px] font-medium">
-          <NavLink to="/my-order">My Order</NavLink>
+        <li className="text-[15px] md:text-[16px] font-medium">
+          <NavLink to="/my-order"> <span  className="flex md:hidden"><FaShoppingCart /> </span> <span className="hidden md:flex">My Order</span></NavLink>
         </li>
       )}
       {user && (
-        <li className="text-[12px] md:text-[16px] font-medium">
-          <NavLink to="/notification">Notification</NavLink>
+        <li className="text-[15px] md:text-[16px] font-medium">
+          <NavLink to="/notification">  <span  className="flex md:hidden"><IoNotificationsSharp /></span> <span className="hidden md:flex">Notification</span></NavLink>
         </li>
       )}
     </>
@@ -111,7 +115,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="fixed bottom-0 left-0 w-full z-100 md:z-0 bg-base-100 border-t border-gray-300 md:hidden">
-        <ul className=" flex justify-center items-center gap-8 py-3">
+        <ul className=" flex justify-center items-center gap-15 py-1.5">
           {links}
         </ul>
       </div>
