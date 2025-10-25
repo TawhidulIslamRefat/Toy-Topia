@@ -13,6 +13,7 @@ import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import Notification from "../Components/Notification/Notification";
 import ProductCard from "../Components/ProductCard/ProductCard";
+import PrivateRoute from "../Provider/Private/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -48,7 +49,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/notification",
-        element: <Notification></Notification>       
+        element: (
+          <PrivateRoute>
+            <Notification></Notification>
+          </PrivateRoute>
+        )       
       },
     ],
   },

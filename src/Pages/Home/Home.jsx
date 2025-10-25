@@ -22,7 +22,7 @@ const Home = () => {
         <TopRating></TopRating>
       </section>
       <section id="top-product" className="w-[95%] lg:w-10/12 mx-auto my-10 md:my-30">
-        <h1 className="text-3xl font-semibold text-center">
+        <h1 className=" text-xl md:text-3xl font-semibold text-center">
           Popular Tech Products
         </h1>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 lg:gap-4 mt-10">
