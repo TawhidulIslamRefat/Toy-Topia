@@ -67,7 +67,6 @@ const Register = () => {
 
   return (
     <div>
-      <ToastContainer></ToastContainer>
       <title>ToyTopia - Register</title>
       <div className="flex justify-center  items-center min-h-screen ">
         <div className="card bg-base-100 w-[95%]   md:w-[60%] lg:w-[35%] shrink-0 rounded-[5px]  shadow-2xl">
