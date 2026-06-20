@@ -35,7 +35,7 @@ const BestBrand = () => {
           <figure>
             <img
               className="w-17 md:w-24 lg:w-40"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Mattel_logo.svg/2042px-Mattel_logo.svg.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Mattel_logo.svg"
               alt="Apple Logo"
             />
           </figure>
@@ -86,7 +86,7 @@ const BestBrand = () => {
           <figure>
             <img
               className="w-17 md:w-24 lg:w-40"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Hasbro_logo.svg/1873px-Hasbro_logo.svg.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Hasbro_logo.svg"
               alt="Apple Logo"
             />
           </figure>
